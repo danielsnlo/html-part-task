@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1>HTML DOM & JavaScript Example</h1>
+    
+    <!-- Teksta ievades lauks un poga -->
+    <form action="#">
+        <input type="text" id="text" placeholder="Ievadi kaut ko...">
+        <input type="button" value="OK" id="okButton">
+    </form>
+    
+    <script>
+        // 1. Izvada savu vārdu konsolē, lai pārbaudītu, vai JavaScript darbojas
+        console.log("Daniels");
+
+        // 2. Funkcija, kas izvada mūsu vārdu
+        function printName() {
+            console.log("Daniels");  // Izdod manu vārdu konsolē
+        }
+
+        // 3. Funkcija, kas iegūst ievadīto vērtību no input laukuma un izvada to konsolē
+        function logInputValue() {
+            let inputElement = document.getElementById('text');  // Iegūstam input elementu
+            let inputValue = inputElement.value;  // Iegūstam ievadīto vērtību
+            console.log("Ievadītā vērtība ir: " + inputValue);  // Izvadām to konsolē
+        }
+
+        // 4. Izveidojam notikumu klausītāju pogai, lai izsauktu funkciju
+        document.getElementById('okButton').addEventListener('click', function() {
+            logInputValue();  // Izsauc funkciju, kas izvada ievadīto vērtību
+        });
+
+    </script>
+</body>
+</html>

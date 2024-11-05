@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skaitļu cilpa</title>
+</head>
+<body>
+
+    <h2>Izvēlieties divus naturālus skaitļus:</h2>
+    
+    <form id="numberForm">
+        <label for="firstNumber">Pirmais skaitlis (mazāks par otro):</label>
+        <input type="number" id="firstNumber" name="firstNumber" min="1" required>
+        <br><br>
+        
+        <label for="secondNumber">Otrais skaitlis:</label>
+        <input type="number" id="secondNumber" name="secondNumber" min="1" required>
+        <br><br>
+        
+        <button type="button" id="checkButton">Pārbaudīt un parādīt skaitļus</button>
+    </form>
+
+    <p id="output"></p>
+
+    <script>
+        // Funkcija, kas apstrādā pogas klikšķi
+        document.getElementById('checkButton').addEventListener('click', function() {
+            // Iegūstam ievadītos skaitļus
+            var firstNumber = parseInt(document.getElementById('firstNumber').value);
+            var secondNumber = parseInt(document.getElementById('secondNumber').value);
+
+            // Iegūstam elementu, kurā izvadīt rezultātu
+            var outputParagraph = document.getElementById('output');
+
+            // Pārbaudām, vai skaitļi ir pareizi ievadīti
+            if (isNaN(firstNumber) || isNaN(secondNumber)) {
+                alert('Lūdzu, ievadiet derīgus naturālus skaitļus!');
+                return;
+            }
+
+            if (firstNumber >= secondNumber) {
+                alert('Pirmajam skaitlim jābūt mazākam par otro!');
+                return;
+            }
+
+            if (firstNumber <= 0 || secondNumber <= 0) {
+                alert('Skaitļiem jābūt naturāliem (pozitīviem) skaitļiem!');
+                return;
+            }
+
+            // Ja visi nosacījumi ir izpildīti, izvadām skaitļus starp tiem
+            var result = [];
+            for (var i = firstNumber + 1; i < secondNumber; i++) {
+                result.push(i);
+            }
+
+            // Izvada rezultātus gan konsolē, gan paragrāfā
+            console.log('Skaitļi starp ' + firstNumber + ' un ' + secondNumber + ':', result);
+            outputParagraph.textContent = 'Skaitļi starp ' + firstNumber + ' un ' + secondNumber + ': ' + result.join(', ');
+
+        });
+    </script>
+
+</body>
+</html>
